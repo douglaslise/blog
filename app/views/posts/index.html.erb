@@ -2,7 +2,7 @@
 
 <% @posts.each do |post| %>
 	<h2>
-		<%= link_to post.titulo, "posts/#{post.id}" %>
+		<%= link_to post.titulo, "/posts/#{post.id}" %>
 	</h2>
 	<p><%= post.texto %></p>
 <% end %>
