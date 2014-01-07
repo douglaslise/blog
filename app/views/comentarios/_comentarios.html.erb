@@ -1,0 +1,31 @@
+<div id="comentarios">
+	<h3>Comentários</h3>
+	<% @post.comentarios.each do |c| %>
+		<p><%= c.texto %></p>
+		<p>Autor: <%= c.autor %></p>
+		<small>
+		  Criado em: <%= l(c.created_at, format: :short) %>
+		  (<%= link_to "Excluir", 
+		         post_comentario_path(@post, c),
+		         method: 'delete',
+		         data: {
+		         	confirm: 'Você tem certeza?', 
+		         	remote: true}
+		    %>)
+		</small>
+	<% end %>
+
+	<h3>Novo Comentário</h3>
+
+	<%= form_for([@post, @comentario]) do |f| %>
+		<div class="field">
+			<%= f.label :texto %>
+			<%= f.text_area :texto %>
+		</div>
+		<div class="field">
+			<%= f.label :autor %>
+			<%= f.text_field :autor %>
+		</div>
+		<%= f.submit %>
+	<% end %>
+</div>

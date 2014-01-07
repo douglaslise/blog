@@ -1,9 +1,14 @@
 Blog::Application.routes.draw do
 
+  devise_for :users
   # get 'posts' => 'posts#index'
   # get 'posts/:id' => 'posts#show'
 
-  resources :posts
+  resources :posts do
+    resources :comentarios
+  end
+
+  root "posts#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

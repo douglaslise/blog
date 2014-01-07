@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
 
+	before_filter :authenticate_user!,
+	  except: [:index, :show]
+
 	def index
 		@posts = Post.all
 	end
 
 	def show
 		@post = Post.find(params[:id])
+		@comentario = Comentario.new
 	end
 
 	def new
@@ -40,6 +44,12 @@ class PostsController < ApplicationController
 		else
 			render action: 'edit'
 		end
+	end
+
+	def destroy
+		@post = Post.find(params[:id])
+		@post.destroy
+		redirect_to posts_path
 	end
 
 end
