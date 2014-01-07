@@ -1,3 +1,4 @@
+<%= render @post %>
 
-<h2><%= @post.titulo %></h2>
-<p><%= @post.texto %></p>
+<%= link_to "Posts", posts_path %>
+<%= link_to "Editar", edit_post_path(@post) %>

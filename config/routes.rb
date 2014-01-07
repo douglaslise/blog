@@ -1,7 +1,9 @@
 Blog::Application.routes.draw do
 
-  get 'posts' => 'posts#index'
-  get 'posts/:id' => 'posts#show'
+  # get 'posts' => 'posts#index'
+  # get 'posts/:id' => 'posts#show'
+
+  resources :posts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
